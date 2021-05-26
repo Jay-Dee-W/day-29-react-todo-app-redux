@@ -1,13 +1,16 @@
-import {useContext, useRef} from "react";
-import TodosContext from './store'
 
-export default function AddToDo(props) {
-    let inputRef = useRef();
-    let {dispatch} = useContext(TodosContext)
+import { useState } from 'react';
+import {useDispatch } from 'react-redux';
+import {addTodo} from '../redux/actions/actions'
+
+export default function AddToDo() {
+    let [todoName, setTodoName] = useState('')
+
+    let dispatch = useDispatch()
     return (
         <div className="add-todo">
-            <input ref={inputRef} type="text"/>
-            <button onClick={() => dispatch( {type: "ADD-TODO", payload: inputRef.current.value} )}>Add</button>
+            <input  type="text" name='todoName' value={todoName} onChange={(e) =>  setTodoName(e.target.value)}/>
+            <button onClick={() => dispatch(addTodo(todoName)  )}>Add</button>
         </div>
     )
 }

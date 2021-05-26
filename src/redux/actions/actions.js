@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO } from "./action-types";
+import { ADD_TODO, TOGGLE_TODO, FILTER_TODO } from "./action-types";
 
 
 export let addTodo = (text) => ({
@@ -8,5 +8,10 @@ export let addTodo = (text) => ({
 
 export let toggleTodo = (text) => ({
     type: TOGGLE_TODO,
+    payload: text
+})
+
+export let filterTodo = (text) => ({
+    type: FILTER_TODO,
     payload: text
 })
